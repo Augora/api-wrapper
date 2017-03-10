@@ -1,4 +1,4 @@
-const utils = require('./Utils')
+const utils = require('./Utils/APICall')
 
 const deputes = utils.get('http://www.nosdeputes.fr/deputes/json')
 

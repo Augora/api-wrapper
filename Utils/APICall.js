@@ -25,6 +25,8 @@ const providedGetAsObservable = getAsObservableFactory(axios.get, providedPromis
 module.exports = {
   promiseToObservable,
   promiseToObservableFactory,
+  getAsObservable,
+  getAsObservableFactory,
   providedGetAsObservable,
   get: providedGetAsObservable,
   default: promiseToObservableFactory(RxJS.Observable.fromPromise)

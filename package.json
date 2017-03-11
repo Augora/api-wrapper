@@ -6,7 +6,7 @@
   "author": "Kevin BACAS",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "node index.js"
   },
   "dependencies": {

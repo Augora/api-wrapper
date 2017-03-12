@@ -16,11 +16,11 @@ module.exports = [
     sites_web:
     [
       {
-        site: 'http://www.jflamour.fr'
+        site: 'http://www.jflamour.fr',
       },
       {
-        site: 'https://twitter.com/JF_Lamour'
-      }
+        site: 'https://twitter.com/JF_Lamour',
+      },
     ],
     profession: 'Kinésithérapeute',
     place_en_hemicycle: '80',
@@ -30,7 +30,7 @@ module.exports = [
     url_nosdeputes: 'http://www.nosdeputes.fr/jean-francois-lamour',
     url_nosdeputes_api: 'http://www.nosdeputes.fr/jean-francois-lamour/json',
     nb_mandats: 2,
-    twitter: 'JF_Lamour'
+    twitter: 'JF_Lamour',
   },
   {
     id: 2,
@@ -49,11 +49,11 @@ module.exports = [
     sites_web:
     [
       {
-        site: 'https://twitter.com/jmclement86'
+        site: 'https://twitter.com/jmclement86',
       },
       {
-        site: 'http://www.jeanmichelclement.com'
-      }
+        site: 'http://www.jeanmichelclement.com',
+      },
     ],
     profession: 'Avocat',
     place_en_hemicycle: '263',
@@ -63,6 +63,6 @@ module.exports = [
     url_nosdeputes: 'http://www.nosdeputes.fr/jean-michel-clement',
     url_nosdeputes_api: 'http://www.nosdeputes.fr/jean-michel-clement/json',
     nb_mandats: 2,
-    twitter: 'jmclement86'
-  }
-]
+    twitter: 'jmclement86',
+  },
+];

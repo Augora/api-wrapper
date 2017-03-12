@@ -6,7 +6,8 @@
   "author": "Kevin BACAS",
   "license": "MIT",
   "scripts": {
-    "test": "jest --coverage",
+    "lint": "eslint ./src/",
+    "test": "npm run lint && jest --coverage",
     "start": "node index.js"
   },
   "dependencies": {
@@ -16,10 +17,10 @@
   },
   "devDependencies": {
     "eslint": "^3.17.1",
-    "eslint-config-standard": "^7.0.1",
+    "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^2.1.1",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "jest": "^19.0.2"
   }
 }

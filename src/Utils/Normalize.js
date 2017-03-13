@@ -1,18 +1,14 @@
-const { normalize } = require('normalizr');
-const { depute } = require('./Schema/DeputesSchema');
+import { normalize } from 'normalizr';
+import { depute } from './Schema/DeputesSchema';
 
-function normalizeDeputes(normalizeFunction, deputesFromAPI) {
+export function normalizeDeputes(normalizeFunction, deputesFromAPI) {
   return normalizeFunction(deputesFromAPI);
 }
 
-function normalizeDeputesFactory(normalizeFunction) {
+export function normalizeDeputesFactory(normalizeFunction) {
   return normalizeDeputes.bind(undefined, normalizeFunction);
 }
 
-const providedNormalizeDeputes = normalizeDeputesFactory(data => normalize(data, [depute]));
+export const providedNormalizeDeputes = normalizeDeputesFactory(data => normalize(data, [depute]));
 
-module.exports = {
-  normalizeDeputes,
-  normalizeDeputesFactory,
-  providedNormalizeDeputes,
-};
+export default providedNormalizeDeputes;

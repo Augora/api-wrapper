@@ -1,12 +1,11 @@
-const { schema } = require('normalizr');
+import { schema } from 'normalizr';
 
-const site = new schema.Entity('site', {}, {
+export const site = new schema.Entity('site', {}, {
   idAttribute: 'site',
 });
-const depute = new schema.Entity('depute', {
+
+export const depute = new schema.Entity('depute', {
   sites_web: [site],
 });
 
-module.exports = {
-  depute,
-};
+export default depute;

@@ -9,8 +9,9 @@
     "build": "webpack",
     "build-production": "webpack -p",
     "lint": "eslint ./src/",
+    "lint-fix": "eslint --fix ./src/",
     "test": "npm run lint && jest --coverage",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --open --hot"
   },
   "dependencies": {
     "axios": "^0.15.3",

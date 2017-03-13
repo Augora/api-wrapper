@@ -1,5 +1,3 @@
 const { getDeputes } = require('./CoreAPI/Deputy');
 
-module.exports = {
-  getDeputes,
-};
+getDeputes().subscribe(d => console.log(d));

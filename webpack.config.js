@@ -5,6 +5,7 @@ module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
     index: './index.js',
+    'e2e-test': './e2e-test.js',
   },
   output: {
     path: path.resolve(__dirname, './dist'),

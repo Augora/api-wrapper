@@ -1,17 +1,17 @@
 {
-  "name": "api-wrapper",
-  "version": "1.0.0",
-  "description": "An global api wrapper",
-  "main": "index.js",
+  "name": "lbp-wrapper",
+  "version": "0.1.2",
+  "description": "La bete politique utilities for API calling :)",
+  "main": "dist/index.js",
   "author": "Kevin BACAS",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "build-production": "webpack -p",
+    "build": "webpack --config webpack.config.js -p",
     "lint": "eslint ./src/",
     "lint-fix": "eslint --fix ./src/",
     "test": "npm run lint && jest --coverage",
-    "start": "webpack-dev-server --open --hot"
+    "start": "webpack-dev-server --config webpack.config.dev.js --open --hot",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "axios": "^0.15.3",

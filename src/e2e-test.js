@@ -1,3 +1,3 @@
-const { getDeputes } = require('./CoreAPI/Deputy');
+import lbpWrapper from '../dist/index';
 
-getDeputes().subscribe(d => console.log(d));
+lbpWrapper.getDeputes().subscribe(d => console.log(d));

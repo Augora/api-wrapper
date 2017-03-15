@@ -1,5 +1,5 @@
-const { getDeputes } = require('./CoreAPI/Deputy');
+import { getDeputes } from './CoreAPI/Deputy';
 
-module.exports = {
+export default {
   getDeputes,
 };

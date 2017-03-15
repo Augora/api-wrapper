@@ -32,6 +32,3 @@ node_modules
 
 # Jest files
 jest/
-
-# compiled files
-dist/

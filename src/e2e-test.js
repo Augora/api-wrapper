@@ -1,3 +1,4 @@
-import lbpWrapper from '../dist/index';
+import lbpWrapper from './index';
 
-lbpWrapper.getDeputes().subscribe(d => console.log(d));
+lbpWrapper.getDeputies().subscribe(d => console.log(d));
+lbpWrapper.getDeputiesInOffice().subscribe(d => console.log(d));

@@ -1,6 +1,6 @@
 {
   "name": "lbp-wrapper",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "La bete politique utilities for API calling :)",
   "main": "dist/index.js",
   "author": "Kevin BACAS",

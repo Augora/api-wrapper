@@ -1,5 +1,5 @@
-import { getDeputes } from './CoreAPI/Deputy';
+import { getDeputies } from './CoreAPI/Deputy';
 
 export default {
-  getDeputes,
+  getDeputies,
 };

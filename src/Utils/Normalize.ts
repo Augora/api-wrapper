@@ -2,7 +2,7 @@ import { normalize } from 'normalizr';
 import { depute } from './Schema/DeputesSchema';
 
 interface INormalize {
-  (o : object): object
+  (o : object): object;
 }
 
 export function normalizeDeputes(normalizeFunction: INormalize, deputesFromAPI : object) {

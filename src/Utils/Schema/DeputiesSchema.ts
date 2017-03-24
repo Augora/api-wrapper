@@ -4,8 +4,8 @@ export const site = new schema.Entity('site', {}, {
   idAttribute: 'site',
 });
 
-export const depute = new schema.Entity('depute', {
+export const deputy = new schema.Entity('depute', {
   sites_web: [site],
 });
 
-export default depute;
+export default deputy;

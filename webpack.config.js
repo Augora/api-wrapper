@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    index: './index.js',
+    index: './index.ts',
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -12,23 +12,20 @@ module.exports = {
     library: 'lbpWrapper',
     libraryTarget: 'commonjs2',
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, './src'),
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': 'production',
+      },
+    }),
+  ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: [/node_modules/],
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015'],
-            },
-          },
-        ],
-      },
+      { test: /\.tsx?$/, loaders: [ 'babel-loader', 'awesome-typescript-loader' ] },
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
     ],
   },
 };

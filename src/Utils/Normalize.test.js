@@ -1,5 +1,5 @@
-const { providedNormalizeDeputes } = require('./Normalize');
-const deputesSeeds = require('./DeputesSeeds');
+import { providedNormalizeDeputes } from './Normalize';
+import deputesSeeds from './DeputesSeeds';
 
 test('test normalize with custom data', () => {
   const data = [

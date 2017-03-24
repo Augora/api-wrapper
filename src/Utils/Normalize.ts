@@ -1,11 +1,15 @@
 import { normalize } from 'normalizr';
 import { depute } from './Schema/DeputesSchema';
 
-export function normalizeDeputes(normalizeFunction, deputesFromAPI) {
+interface INormalize {
+  (o : object): object
+}
+
+export function normalizeDeputes(normalizeFunction: INormalize, deputesFromAPI : object) {
   return normalizeFunction(deputesFromAPI);
 }
 
-export function normalizeDeputesFactory(normalizeFunction) {
+export function normalizeDeputesFactory(normalizeFunction : INormalize) {
   return normalizeDeputes.bind(undefined, normalizeFunction);
 }
 

@@ -1,4 +1,4 @@
-const utils = require('./APICall');
+import utils from './APICall';
 
 test('promiseToObservable calls the function with the right argument', () => {
   const fn = jest.fn();

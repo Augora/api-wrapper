@@ -35,3 +35,4 @@ jest/
 
 # compiled files
 dist/
+tsDist/

@@ -1,5 +1,6 @@
 import { normalize } from 'normalizr';
 import { depute } from './Schema/DeputesSchema';
+import { deputyInOffice } from './Schema/DeputiesInOfficeSchema'
 
 interface INormalize {
   (o : object): object;
@@ -15,4 +16,5 @@ export function normalizeDeputesFactory(normalizeFunction : INormalize) {
 
 export const providedNormalizeDeputes = normalizeDeputesFactory(data => normalize(data, [depute]));
 
-export default providedNormalizeDeputes;
+const deputiesInOfficeNormalizer = (data : object) => normalize(data, [deputyInOffice]);
+export const providedNormalizeDeputesInOffice = normalizeDeputesFactory(deputiesInOfficeNormalizer);

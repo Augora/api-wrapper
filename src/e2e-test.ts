@@ -1,4 +1,4 @@
-import index from './index';
+import { getDeputies, getDeputiesInOffice } from './index.js';
 
-index.getDeputies().subscribe((d : any) => console.log(d));
-index.getDeputiesInOffice().subscribe((d : any) => console.log(d));
+getDeputies().subscribe((d : any) => console.log(d));
+getDeputiesInOffice().subscribe((d : any) => console.log(d));

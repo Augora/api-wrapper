@@ -1,6 +1,6 @@
-import { getDeputies, getDeputiesInOffice } from './CoreAPI/Deputy';
+import Deputy from './CoreAPI/Deputy';
 
-export default {
-  getDeputies,
-  getDeputiesInOffice,
-};
+export const getDeputies = Deputy.getDeputies;
+export const getDeputiesInOffice = Deputy.getDeputiesInOffice;
+
+export default Deputy;

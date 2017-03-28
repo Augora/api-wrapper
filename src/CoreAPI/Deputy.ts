@@ -31,3 +31,8 @@ export function getDeputiesInOffice() {
     .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
     .map((d : Deputy) => providedNormalizeDeputesInOffice(d));
 }
+
+export default {
+  getDeputies,
+  getDeputiesInOffice,
+};

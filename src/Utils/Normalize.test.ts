@@ -1,5 +1,5 @@
 import { providedNormalizeDeputes } from './Normalize';
-import deputesSeeds from './DeputesSeeds';
+import DeputesSeeds from './DeputesSeeds';
 
 test('test normalize with custom data', () => {
   const data = [
@@ -23,6 +23,6 @@ test('test normalize with custom data', () => {
 });
 
 test('test normalize with custom data', () => {
-  const normalizedData = providedNormalizeDeputes(deputesSeeds);
+  const normalizedData = providedNormalizeDeputes(DeputesSeeds);
   expect(normalizedData).toMatchSnapshot();
 });

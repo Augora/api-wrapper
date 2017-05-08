@@ -1,8 +1,8 @@
-import utils from './APICall';
+import { promiseToObservable, getAsObservable } from './APICall';
 
 test('promiseToObservable calls the function with the right argument', () => {
   const fn = jest.fn();
-  utils.promiseToObservable(fn, 5);
+  promiseToObservable(fn, 5);
   expect(fn.mock.calls.length).toBe(1);
   expect(fn.mock.calls[0][0]).toBe(5);
 });
@@ -10,7 +10,7 @@ test('promiseToObservable calls the function with the right argument', () => {
 test('getAsObservable calls the functions with right arguments', () => {
   const axios = jest.fn();
   const promiseToObservable = jest.fn();
-  utils.getAsObservable(axios, promiseToObservable, 'a.fr', { a: 1 });
+  getAsObservable(axios, promiseToObservable, 'a.fr', { a: 1 });
   expect(axios.mock.calls.length).toBe(1);
   expect(axios.mock.calls[0][0]).toBe('a.fr');
   expect(axios.mock.calls[0][1]).toEqual({ a: 1 });

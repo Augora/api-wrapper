@@ -2,6 +2,7 @@ import { get } from '../Utils/APICall';
 import {
   providedNormalizeDeputes,
   providedNormalizeDeputesInOffice,
+  providedNormalizeDeputy,
 } from '../Utils/Normalize';
 
 interface Response {
@@ -32,7 +33,14 @@ export function getDeputiesInOffice() {
     .map((d : Deputy) => providedNormalizeDeputesInOffice(d));
 }
 
+export function getDeputy(nom: string) {
+  return get(`http://www.nosdeputes.fr/${nom}/json`)
+    .map((r : Response) => r.data)
+    .map((d : Deputy) => providedNormalizeDeputy(d));
+}
+
 export default {
   getDeputies,
   getDeputiesInOffice,
+  getDeputy,
 };

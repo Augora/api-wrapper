@@ -17,7 +17,7 @@ export const email = new schema.Entity('email', {}, {
 });
 
 export const responsabilite = new schema.Entity('responsabilite', {}, {
-  idAttribute: (value) => `${value.responsabilite.organisme}/${value.responsabilite.fonction}`,
+  idAttribute: value => `${value.responsabilite.organisme}/${value.responsabilite.fonction}`,
   processStrategy: (value) => {
     return Object.assign({}, value.responsabilite);
   },

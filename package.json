@@ -33,7 +33,7 @@
     "tslint-config-airbnb": "^5.0.1",
     "typescript": "^2.4.2",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^3.0.0"
   },
   "jest": {
     "globals": {

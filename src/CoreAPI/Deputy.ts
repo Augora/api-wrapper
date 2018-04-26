@@ -1,46 +1,51 @@
-import { get } from '../Utils/APICall';
+import { getFromUrl } from "../Utils/APICall";
+import { assign } from "lodash";
 import {
   providedNormalizeDeputes,
   providedNormalizeDeputesInOffice,
-  providedNormalizeDeputy,
-} from '../Utils/Normalize';
+  providedNormalizeDeputy
+} from "../Utils/Normalize";
 
 interface Response {
   data: any;
 }
 
-interface Deputy { }
+interface Deputy {}
 
 interface DeputyHolder {
   depute: Deputy;
 }
 
 interface Deputies {
-  deputes: [ Deputy ];
+  deputes: [Deputy];
 }
 
 export function getDeputies() {
-  return get('https://www.nosdeputes.fr/deputes/json')
-    .map((r : Response) => r.data)
-    .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
-    .map((d : Deputy) => providedNormalizeDeputes(d));
+  return getFromUrl("https://www.nosdeputes.fr/deputes/json")
+    .then((r: Response) => r.data)
+    .then((d: Deputies) =>
+      d.deputes.map((i: DeputyHolder) => assign({}, i.depute))
+    )
+    .then((d: Deputy) => providedNormalizeDeputes(d));
 }
 
 export function getDeputiesInOffice() {
-  return get('https://www.nosdeputes.fr/deputes/enmandat/json')
-    .map((r : Response) => r.data)
-    .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
-    .map((d : Deputy) => providedNormalizeDeputesInOffice(d));
+  return getFromUrl("https://www.nosdeputes.fr/deputes/enmandat/json")
+    .then((r: Response) => r.data)
+    .then((d: Deputies) =>
+      d.deputes.map((i: DeputyHolder) => assign({}, i.depute))
+    )
+    .then((d: Deputy) => providedNormalizeDeputesInOffice(d));
 }
 
 export function getDeputy(nom: string) {
-  return get(`https://www.nosdeputes.fr/${nom}/json`)
-    .map((r : Response) => r.data)
-    .map((d : Deputy) => providedNormalizeDeputy(d));
+  return getFromUrl(`https://www.nosdeputes.fr/${nom}/json`)
+    .then((r: Response) => r.data)
+    .then((d: Deputy) => providedNormalizeDeputy(d));
 }
 
 export default {
   getDeputies,
   getDeputiesInOffice,
-  getDeputy,
+  getDeputy
 };

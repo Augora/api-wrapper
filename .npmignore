@@ -35,3 +35,9 @@ jest/
 
 # Typescript dist files
 tsDist/
+
+# Typescript config
+tsconfig.json
+
+# Sources
+src

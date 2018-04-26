@@ -20,21 +20,21 @@ interface Deputies {
 }
 
 export function getDeputies() {
-  return get('http://www.nosdeputes.fr/deputes/json')
+  return get('https://www.nosdeputes.fr/deputes/json')
     .map((r : Response) => r.data)
     .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
     .map((d : Deputy) => providedNormalizeDeputes(d));
 }
 
 export function getDeputiesInOffice() {
-  return get('http://www.nosdeputes.fr/deputes/enmandat/json')
+  return get('https://www.nosdeputes.fr/deputes/enmandat/json')
     .map((r : Response) => r.data)
     .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
     .map((d : Deputy) => providedNormalizeDeputesInOffice(d));
 }
 
 export function getDeputy(nom: string) {
-  return get(`http://www.nosdeputes.fr/${nom}/json`)
+  return get(`https://www.nosdeputes.fr/${nom}/json`)
     .map((r : Response) => r.data)
     .map((d : Deputy) => providedNormalizeDeputy(d));
 }

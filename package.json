@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf ./dist/",
-    "lint": "tslint --project tslint.json",
+    "lint": "tslint --project .",
     "build": "npm run clean && webpack --config webpack.config.js -p",
     "test": "npm run lint && jest",
     "start": "webpack-dev-server --config webpack.config.dev.js --open --hot",

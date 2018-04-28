@@ -1,47 +1,45 @@
-import { getFromUrl } from "../Utils/APICall";
 import { assign } from "lodash";
+import { getFromUrl } from "../Utils/APICall";
 import {
   providedNormalizeDeputes,
   providedNormalizeDeputesInOffice,
   providedNormalizeDeputy
 } from "../Utils/Normalize";
 
-interface Response {
+interface IResponse {
   data: any;
 }
 
-interface Deputy {}
-
-interface DeputyHolder {
-  depute: Deputy;
+interface IDeputyHolder {
+  depute: {};
 }
 
-interface Deputies {
-  deputes: [Deputy];
+interface IDeputies {
+  deputes: [{}];
 }
 
 export function getDeputies() {
   return getFromUrl("https://www.nosdeputes.fr/deputes/json")
-    .then((r: Response) => r.data)
-    .then((d: Deputies) =>
-      d.deputes.map((i: DeputyHolder) => assign({}, i.depute))
+    .then((r: IResponse) => r.data)
+    .then((d: IDeputies) =>
+      d.deputes.map((i: IDeputyHolder) => assign({}, i.depute))
     )
-    .then((d: Deputy) => providedNormalizeDeputes(d));
+    .then((d: {}) => providedNormalizeDeputes(d));
 }
 
 export function getDeputiesInOffice() {
   return getFromUrl("https://www.nosdeputes.fr/deputes/enmandat/json")
-    .then((r: Response) => r.data)
-    .then((d: Deputies) =>
-      d.deputes.map((i: DeputyHolder) => assign({}, i.depute))
+    .then((r: IResponse) => r.data)
+    .then((d: IDeputies) =>
+      d.deputes.map((i: IDeputyHolder) => assign({}, i.depute))
     )
-    .then((d: Deputy) => providedNormalizeDeputesInOffice(d));
+    .then((d: {}) => providedNormalizeDeputesInOffice(d));
 }
 
 export function getDeputy(nom: string) {
   return getFromUrl(`https://www.nosdeputes.fr/${nom}/json`)
-    .then((r: Response) => r.data)
-    .then((d: Deputy) => providedNormalizeDeputy(d));
+    .then((r: IResponse) => r.data)
+    .then((d: {}) => providedNormalizeDeputy(d));
 }
 
 export default {

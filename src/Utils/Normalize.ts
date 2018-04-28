@@ -1,20 +1,18 @@
 import { normalize } from "normalizr";
 import { deputy } from "./Schema/DeputySchema";
 
-export interface INormalize {
-  (o: object): object;
-}
+export type Normalize = (o: object) => object;
 
 const deputiesInOfficeNormalizer = (data: object) => normalize(data, [deputy]);
 
 export function normalizeDeputes(
-  normalizeFunction: INormalize,
+  normalizeFunction: Normalize,
   deputesFromAPI: object
 ) {
   return normalizeFunction(deputesFromAPI);
 }
 
-export function normalizeDeputesFactory(normalizeFunction: INormalize) {
+export function normalizeDeputesFactory(normalizeFunction: Normalize) {
   return normalizeDeputes.bind(undefined, normalizeFunction);
 }
 

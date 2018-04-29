@@ -1,46 +1,49 @@
-import { get } from '../Utils/APICall';
+import { assign } from "lodash";
+import { getFromUrl } from "../Utils/APICall";
 import {
   providedNormalizeDeputes,
   providedNormalizeDeputesInOffice,
-  providedNormalizeDeputy,
-} from '../Utils/Normalize';
+  providedNormalizeDeputy
+} from "../Utils/Normalize";
 
-interface Response {
+interface IResponse {
   data: any;
 }
 
-interface Deputy { }
-
-interface DeputyHolder {
-  depute: Deputy;
+interface IDeputyHolder {
+  depute: {};
 }
 
-interface Deputies {
-  deputes: [ Deputy ];
+interface IDeputies {
+  deputes: [{}];
 }
 
 export function getDeputies() {
-  return get('https://www.nosdeputes.fr/deputes/json')
-    .map((r : Response) => r.data)
-    .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
-    .map((d : Deputy) => providedNormalizeDeputes(d));
+  return getFromUrl("https://www.nosdeputes.fr/deputes/json")
+    .then((r: IResponse) => r.data)
+    .then((d: IDeputies) =>
+      d.deputes.map((i: IDeputyHolder) => assign({}, i.depute))
+    )
+    .then((d: {}) => providedNormalizeDeputes(d));
 }
 
 export function getDeputiesInOffice() {
-  return get('https://www.nosdeputes.fr/deputes/enmandat/json')
-    .map((r : Response) => r.data)
-    .map((d : Deputies) => d.deputes.map((i : DeputyHolder) => Object.assign({}, i.depute)))
-    .map((d : Deputy) => providedNormalizeDeputesInOffice(d));
+  return getFromUrl("https://www.nosdeputes.fr/deputes/enmandat/json")
+    .then((r: IResponse) => r.data)
+    .then((d: IDeputies) =>
+      d.deputes.map((i: IDeputyHolder) => assign({}, i.depute))
+    )
+    .then((d: {}) => providedNormalizeDeputesInOffice(d));
 }
 
 export function getDeputy(nom: string) {
-  return get(`https://www.nosdeputes.fr/${nom}/json`)
-    .map((r : Response) => r.data)
-    .map((d : Deputy) => providedNormalizeDeputy(d));
+  return getFromUrl(`https://www.nosdeputes.fr/${nom}/json`)
+    .then((r: IResponse) => r.data)
+    .then((d: {}) => providedNormalizeDeputy(d));
 }
 
 export default {
   getDeputies,
   getDeputiesInOffice,
-  getDeputy,
+  getDeputy
 };

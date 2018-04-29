@@ -1,29 +1,51 @@
-import { schema } from 'normalizr';
+import { schema } from "normalizr";
+import { assign } from "lodash";
 
-export const site = new schema.Entity('site', {}, {
-  idAttribute: 'site',
-});
+export const site = new schema.Entity(
+  "site",
+  {},
+  {
+    idAttribute: "site"
+  }
+);
 
-export const adresse = new schema.Entity('adresse', {}, {
-  idAttribute: 'adresse',
-});
+export const adresse = new schema.Entity(
+  "adresse",
+  {},
+  {
+    idAttribute: "adresse"
+  }
+);
 
-export const mandat = new schema.Entity('mandat', {}, {
-  idAttribute: 'mandat',
-});
+export const mandat = new schema.Entity(
+  "mandat",
+  {},
+  {
+    idAttribute: "mandat"
+  }
+);
 
-export const email = new schema.Entity('email', {}, {
-  idAttribute: 'email',
-});
+export const email = new schema.Entity(
+  "email",
+  {},
+  {
+    idAttribute: "email"
+  }
+);
 
-export const responsabilite = new schema.Entity('responsabilite', {}, {
-  idAttribute: value => `${value.responsabilite.organisme}/${value.responsabilite.fonction}`,
-  processStrategy: (value) => {
-    return Object.assign({}, value.responsabilite);
-  },
-});
+export const responsabilite = new schema.Entity(
+  "responsabilite",
+  {},
+  {
+    idAttribute: value =>
+      `${value.responsabilite.organisme}/${value.responsabilite.fonction}`,
+    processStrategy: value => {
+      return assign({}, value.responsabilite);
+    }
+  }
+);
 
-export const deputy = new schema.Entity('depute', {
+export const deputy = new schema.Entity("depute", {
   sites_web: [site],
   adresses: [adresse],
   anciens_autres_mandats: [mandat],
@@ -32,5 +54,5 @@ export const deputy = new schema.Entity('depute', {
   emails: [email],
   groupes_parlementaires: [responsabilite],
   responsabilites: [responsabilite],
-  responsabilites_extra_parlementaires: [responsabilite],
+  responsabilites_extra_parlementaires: [responsabilite]
 });

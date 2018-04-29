@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "8.11.1"
+  - "10.0.0"
+cache: yarn
+notifications: 
+  slack: labetepolitique-team:NbzHhCF6cj1DOJhe8lGOg5ih 

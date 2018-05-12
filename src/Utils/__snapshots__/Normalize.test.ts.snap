@@ -1,47 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test normalize with custom data 1`] = `
-Object {
-  "entities": Object {
-    "depute": Object {
-      "1": Object {
-        "id": 1,
-        "sites_web": Array [
-          "a.fr",
-          "b.fr",
-        ],
-      },
-      "2": Object {
-        "id": 2,
-        "sites_web": Array [
-          "c.fr",
-          "d.fr",
-        ],
-      },
-    },
-    "site": Object {
-      "a.fr": Object {
-        "site": "a.fr",
-      },
-      "b.fr": Object {
-        "site": "b.fr",
-      },
-      "c.fr": Object {
-        "site": "c.fr",
-      },
-      "d.fr": Object {
-        "site": "d.fr",
-      },
-    },
-  },
-  "result": Array [
-    1,
-    2,
-  ],
-}
-`;
-
-exports[`test normalize with custom data 2`] = `
+exports[`Test deputies normalization with seeds 1`] = `
 Object {
   "entities": Object {
     "depute": Object {
@@ -120,6 +79,48 @@ Object {
   "result": Array [
     1,
     2,
+  ],
+}
+`;
+
+exports[`Test deputy normalization with seed 1`] = `
+Object {
+  "entities": Object {
+    "depute": Object {
+      "undefined": Object {
+        "0": Object {
+          "site": "http://www.jflamour.fr",
+        },
+        "1": Object {
+          "site": "https://twitter.com/JF_Lamour",
+        },
+      },
+    },
+  },
+  "result": Array [
+    1,
+    "Jean-François Lamour",
+    "Lamour",
+    "Jean-François",
+    "H",
+    "1956-02-02",
+    "Paris (Paris)",
+    "75",
+    "Paris",
+    13,
+    "2012-06-20",
+    "LR",
+    "Les Républicains",
+    undefined,
+    "Kinésithérapeute",
+    "80",
+    "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA230329",
+    "230329",
+    "jean-francois-lamour",
+    "http://www.nosdeputes.fr/jean-francois-lamour",
+    "http://www.nosdeputes.fr/jean-francois-lamour/json",
+    2,
+    "JF_Lamour",
   ],
 }
 `;

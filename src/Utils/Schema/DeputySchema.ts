@@ -5,43 +5,44 @@ export const site = new schema.Entity(
   "site",
   {},
   {
-    idAttribute: "site"
-  }
+    idAttribute: "site",
+  },
 );
 
 export const adresse = new schema.Entity(
   "adresse",
   {},
   {
-    idAttribute: "adresse"
-  }
+    idAttribute: "adresse",
+  },
 );
 
 export const mandat = new schema.Entity(
   "mandat",
   {},
   {
-    idAttribute: "mandat"
-  }
+    idAttribute: "mandat",
+  },
 );
 
 export const email = new schema.Entity(
   "email",
   {},
   {
-    idAttribute: "email"
-  }
+    idAttribute: "email",
+  },
 );
 
 export const responsabilite = new schema.Entity(
   "responsabilite",
   {},
   {
-    idAttribute: value =>
-      `${value.responsabilite.organisme}/${value.responsabilite.fonction}`,
+    idAttribute: value => {
+      return `${value.responsabilite.organisme}/${value.responsabilite.fonction}`;
+    },
     processStrategy: value => {
       return assign({}, value.responsabilite);
-    }
+    },
   }
 );
 
@@ -54,5 +55,21 @@ export const deputy = new schema.Entity("depute", {
   emails: [email],
   groupes_parlementaires: [responsabilite],
   responsabilites: [responsabilite],
-  responsabilites_extra_parlementaires: [responsabilite]
+  responsabilites_extra_parlementaires: [responsabilite],
+},
+{
+  processStrategy: value => {
+    const url15 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/15`;
+    const url30 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/30`;
+    const url60 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/60`;
+    const url120 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/120`;
+    const urlDynamic = height => `https://www.nosdeputes.fr/depute/photo/${value.slug}/${height}`;
+    return assign({}, value, {
+      image15 : url15,
+      image30 : url30,
+      image60 : url60,
+      image120 : url120,
+      imageDynamic: urlDynamic,
+    });
+  },
 });

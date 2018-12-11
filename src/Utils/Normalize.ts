@@ -23,6 +23,7 @@ export const providedNormalizeDeputes = normalizeDeputesFactory(
 export function providedNormalizeDeputy(data: object) {
   return normalize(data, [deputy]);
 }
+
 export const providedNormalizeDeputesInOffice = normalizeDeputesFactory(
   deputiesInOfficeNormalizer
 );

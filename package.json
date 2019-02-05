@@ -19,7 +19,7 @@
     "normalizr": "^3.2.3"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.11",
+    "@types/jest": "^24.0.0",
     "@types/lodash": "^4.14.108",
     "@types/normalizr": "^2.0.18",
     "ts-jest": "^22.4.6",

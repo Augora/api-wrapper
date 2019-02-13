@@ -46,6 +46,10 @@ export const responsabilite = new schema.Entity(
   }
 );
 
+function getSafeArrayLength(array: any[]): number {
+    return array ? array.length : 0;
+}
+
 export const deputy = new schema.Entity("depute", {
   sites_web: [site],
   adresses: [adresse],
@@ -59,17 +63,23 @@ export const deputy = new schema.Entity("depute", {
 },
 {
   processStrategy: value => {
-    const url15 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/15`;
-    const url30 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/30`;
-    const url60 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/60`;
-    const url120 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/120`;
-    const urlDynamic = height => `https://www.nosdeputes.fr/depute/photo/${value.slug}/${height}`;
-    return assign({}, value, {
-      image15 : url15,
-      image30 : url30,
-      image60 : url60,
-      image120 : url120,
-      imageDynamic: urlDynamic,
-    });
+    if(value) {
+        const url15 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/15`;
+        const url30 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/30`;
+        const url60 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/60`;
+        const url120 = `https://www.nosdeputes.fr/depute/photo/${value.slug}/120`;
+        const urlDynamic = (height: number) => `https://www.nosdeputes.fr/depute/photo/${value.slug}/${height}`;
+        const nbMandatsTotaux = getSafeArrayLength(value.anciens_mandats) + getSafeArrayLength(value.autres_mandats) + getSafeArrayLength(value.anciens_autres_mandats);
+        return assign({}, value, {
+          image15 : url15,
+          image30 : url30,
+          image60 : url60,
+          image120 : url120,
+          imageDynamic: urlDynamic,
+          nbMandatsTotaux,
+        });
+    } else {
+      return value;
+    }
   },
 });

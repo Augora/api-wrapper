@@ -1,68 +1,95 @@
 export default [
   {
     id: 1,
-    nom: 'Jean-François Lamour',
-    nom_de_famille: 'Lamour',
-    prenom: 'Jean-François',
-    sexe: 'H',
-    date_naissance: '1956-02-02',
-    lieu_naissance: 'Paris (Paris)',
-    num_deptmt: '75',
-    nom_circo: 'Paris',
-    num_circo: 13,
-    mandat_debut: '2012-06-20',
-    groupe_sigle: 'LR',
-    parti_ratt_financier: 'Les Républicains',
-    sites_web:
-    [
-      {
-        site: 'http://www.jflamour.fr',
-      },
-      {
-        site: 'https://twitter.com/JF_Lamour',
-      },
+    nom: "C\u00e9dric Roussel",
+    nom_de_famille: "Roussel",
+    prenom: "C\u00e9dric",
+    sexe: "H",
+    date_naissance: "1972-10-10",
+    lieu_naissance: "Brest (Finist\u00e8re)",
+    num_deptmt: "06",
+    nom_circo: "Alpes-Maritimes",
+    num_circo: 3,
+    mandat_debut: "2017-06-21",
+    groupe_sigle: "LREM",
+    parti_ratt_financier: "En marche !",
+    sites_web: [
+      { site: "https://twitter.com/CedricRoussel06" },
+      { site: "https://fr-fr.facebook.com/CRoussel06/" },
+      { site: "http://cedricroussel.en-marche.fr" },
+      { site: "https://www.cedricroussel.fr" }
     ],
-    profession: 'Kinésithérapeute',
-    place_en_hemicycle: '80',
-    url_an: 'http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA230329',
-    id_an: '230329',
-    slug: 'jean-francois-lamour',
-    url_nosdeputes: 'http://www.nosdeputes.fr/jean-francois-lamour',
-    url_nosdeputes_api: 'http://www.nosdeputes.fr/jean-francois-lamour/json',
-    nb_mandats: 2,
-    twitter: 'JF_Lamour',
+    emails: [
+      { email: "cedric.roussel@assemblee-nationale.fr" },
+      { email: "6circo03@en-marche.fr" }
+    ],
+    adresses: [
+      {
+        adresse:
+          "Assembl\u00e9e nationale, 126 Rue de l'Universit\u00e9, 75355 Paris 07 SP"
+      }
+    ],
+    collaborateurs: [
+      { collaborateur: "M. Yassine Id-Nasser Medjani" },
+      { collaborateur: "M. Yanis Lahmeri" },
+      { collaborateur: "Mme Morgane Reclus" },
+      { collaborateur: "Mme Caroline Puiss\u00e9gur-Ripet" }
+    ],
+    autres_mandats: [],
+    anciens_autres_mandats: [],
+    anciens_mandats: [{ mandat: "21/06/2017 /  / " }],
+    profession: "Conseiller en gestion de patrimoine ind\u00e9pendant",
+    place_en_hemicycle: "309",
+    url_an: "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA718902",
+    id_an: "718902",
+    slug: "cedric-roussel",
+    url_nosdeputes: "https://www.nosdeputes.fr/cedric-roussel",
+    url_nosdeputes_api: "https://www.nosdeputes.fr/cedric-roussel/json",
+    nb_mandats: 1,
+    twitter: "CedricRoussel06"
   },
   {
     id: 2,
-    nom: 'Jean-Michel Clément',
-    nom_de_famille: 'Clément',
-    prenom: 'Jean-Michel',
-    sexe: 'H',
-    date_naissance: '1954-10-31',
-    lieu_naissance: 'Mauprevoir (Vienne)',
-    num_deptmt: '86',
-    nom_circo: 'Vienne',
-    num_circo: 3,
-    mandat_debut: '2012-06-20',
-    groupe_sigle: 'SER',
-    parti_ratt_financier: 'Parti socialiste',
-    sites_web:
-    [
-      {
-        site: 'https://twitter.com/jmclement86',
-      },
-      {
-        site: 'http://www.jeanmichelclement.com',
-      },
+    nom: "Nadia Hai",
+    nom_de_famille: "Hai",
+    prenom: "Nadia",
+    sexe: "F",
+    date_naissance: "1980-03-08",
+    lieu_naissance: "Trappes (Yvelines)",
+    num_deptmt: "78",
+    nom_circo: "Yvelines",
+    num_circo: 11,
+    mandat_debut: "2017-06-21",
+    groupe_sigle: "LREM",
+    parti_ratt_financier: "En marche !",
+    sites_web: [
+      { site: "https://twitter.com/NadiaHai78" },
+      { site: "https://fr-fr.facebook.com/NadiaHai7811/" },
+      { site: "http://www.rem-circo7811.fr" }
     ],
-    profession: 'Avocat',
-    place_en_hemicycle: '263',
-    url_an: 'http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA336439',
-    id_an: '336439',
-    slug: 'jean-michel-clement',
-    url_nosdeputes: 'http://www.nosdeputes.fr/jean-michel-clement',
-    url_nosdeputes_api: 'http://www.nosdeputes.fr/jean-michel-clement/json',
-    nb_mandats: 2,
-    twitter: 'jmclement86',
-  },
+    emails: [{ email: "nadia.hai@assemblee-nationale.fr" }],
+    adresses: [
+      {
+        adresse:
+          "Assembl\u00e9e nationale, 126 Rue de l'Universit\u00e9, 75355 Paris 07 SP"
+      }
+    ],
+    collaborateurs: [
+      { collaborateur: "M. Pierre Perret" },
+      { collaborateur: "Mme Moufida Goucha" },
+      { collaborateur: "Mme Feriel Herlaut" }
+    ],
+    autres_mandats: [],
+    anciens_autres_mandats: [],
+    anciens_mandats: [{ mandat: "21/06/2017 /  / " }],
+    profession: "Autre cadre (secteur priv\u00e9)",
+    place_en_hemicycle: "349",
+    url_an: "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA722054",
+    id_an: "722054",
+    slug: "nadia-hai",
+    url_nosdeputes: "https://www.nosdeputes.fr/nadia-hai",
+    url_nosdeputes_api: "https://www.nosdeputes.fr/nadia-hai/json",
+    nb_mandats: 1,
+    twitter: "NadiaHai78"
+  }
 ];

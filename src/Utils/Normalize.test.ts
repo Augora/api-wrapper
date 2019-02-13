@@ -1,4 +1,4 @@
-import { normalizeDeputes, providedNormalizeDeputes } from "./Normalize";
+import { normalizeDeputes, providedNormalizeDeputes, providedNormalizeDeputy } from "./Normalize";
 import Seeds from "./DeputesSeeds";
 
 test("calls the function", () => {
@@ -15,7 +15,7 @@ test("return passed value", () => {
 });
 
 test("Test deputy normalization with seed", () => {
-  expect(providedNormalizeDeputes(Seeds[0])).toMatchSnapshot();
+  expect(providedNormalizeDeputy(Seeds[0])).toMatchSnapshot();
 });
 
 test("Test deputies normalization with seeds", () => {

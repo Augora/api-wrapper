@@ -22,7 +22,7 @@
     "@types/jest": "^23.3.11",
     "@types/lodash": "^4.14.108",
     "@types/normalizr": "^2.0.18",
-    "ts-jest": "^22.4.6",
+    "ts-jest": "^24.0.0",
     "jest": "^22.4.3",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.12.0",

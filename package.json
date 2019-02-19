@@ -19,11 +19,11 @@
     "normalizr": "^3.2.3"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.3",
-    "@types/lodash": "^4.14.108",
+    "@types/jest": "^24.0.6",
+    "@types/lodash": "^4.14.121",
     "@types/normalizr": "^2.0.18",
     "jest": "^24.1.0",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^24.0.0",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.12.0",
     "typescript": "^3.3.3"

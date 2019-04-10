@@ -2,18 +2,6 @@ import { assign } from "lodash";
 import { getFromUrl } from "../Utils/APICall";
 import { deputyAttributesMapping } from "./Mappings";
 
-interface IResponse {
-  data: any;
-}
-
-interface IDeputyHolder {
-  depute: {};
-}
-
-interface IDeputies {
-  deputes: [{}];
-}
-
 export function getDeputies() {
   return getFromUrl("https://www.nosdeputes.fr/deputes/json")
     .then((r: IResponse) => r.data)

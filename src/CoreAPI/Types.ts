@@ -13,10 +13,10 @@ interface IDeputy {
   mandat_debut: string;
   groupe_sigle: string;
   parti_ratt_financier: string;
-  sites_web: { site: string };
-  emails: { email: string };
-  adresses: { adresse: string };
-  collaborateurs: { collaborateur: string };
+  sites_web: string[];
+  emails: string[];
+  adresses: string[];
+  collaborateurs: string[];
   anciens_mandats: string[];
   autres_mandats: string[];
   anciens_autres_mandats: string[];

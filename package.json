@@ -1,17 +1,17 @@
 {
   "name": "lbp-wrapper",
-  "version": "0.6.1",
+  "version": "0.6.4",
   "description": "La bete politique utilities for API calling :)",
   "author": "Kevin BACAS",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rm -rf ./dist/",
-    "build": "tsc",
+    "build": "tsc --declaration",
     "prepublish": "npm run build",
     "lint": "tslint --project .",
-    "test": "jest"
+    "test": "npm run lint && jest"
   },
   "dependencies": {
     "axios": "^0.18.0",

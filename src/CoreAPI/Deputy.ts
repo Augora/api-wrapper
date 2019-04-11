@@ -1,6 +1,7 @@
 import { assign } from "lodash";
 import { getFromUrl } from "../Utils/APICall";
 import { deputyAttributesMapping } from "./Mappings";
+import "./Types";
 
 export function getDeputies() {
   return getFromUrl("https://www.nosdeputes.fr/deputes/json")

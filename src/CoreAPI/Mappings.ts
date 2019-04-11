@@ -1,4 +1,5 @@
 import { assign } from "lodash";
+import "./Types";
 
 const nestedArrayAssociativeArray = {
   sites_web: "site",

@@ -1,4 +1,9 @@
-import { getDeputies, getDeputiesInOffice, getDeputy } from "./index";
+import {
+  getDeputies,
+  getDeputiesInOffice,
+  getDeputy,
+  getPoliticalGroups
+} from "./index";
 
 it("Call getDeputies()", async () => {
   return getDeputies().then(ds => {
@@ -37,5 +42,11 @@ it("Call getDeputy('patricia-lemoine')", async () => {
     expect(d.image120).toBeDefined();
     expect(d.imageDynamic(50)).toBeDefined();
     expect(d.nbMandatsTotaux).toBeDefined();
+  });
+});
+
+it("Call getPoliticalGroups()", async () => {
+  return getPoliticalGroups().then(d => {
+    expect(d).toBeDefined();
   });
 });

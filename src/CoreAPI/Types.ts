@@ -46,3 +46,23 @@ interface IDeputyHolder {
 interface IDeputies {
   deputes: [IDeputyHolder];
 }
+
+interface IPoliticalGroup {
+  organisme: {
+    id: number;
+    slug: string;
+    nom: string;
+    acronyme: string;
+    groupe_actuel: boolean;
+    couleur: string;
+    order: number;
+    type: string;
+    url_nosdeputes: string;
+    url_nosdeputes_api: string;
+  };
+}
+
+interface IPoliticalGroups {
+  organismes: [IPoliticalGroup];
+}
+

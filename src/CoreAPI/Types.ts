@@ -13,13 +13,13 @@ interface IDeputy {
   mandat_debut: string;
   groupe_sigle: string;
   parti_ratt_financier: string;
-  sites_web: string[];
-  emails: string[];
-  adresses: string[];
-  collaborateurs: string[];
-  anciens_mandats: string[];
-  autres_mandats: string[];
-  anciens_autres_mandats: string[];
+  sites_web: [string];
+  emails: [string];
+  adresses: [string];
+  collaborateurs: [string];
+  anciens_mandats: [string];
+  autres_mandats: [string];
+  anciens_autres_mandats: [string];
   profession: string;
   place_en_hemicycle: string;
   url_an: string;
@@ -37,10 +37,6 @@ interface IDeputy {
   image120: string;
   nbMandatsTotaux: number;
   imageDynamic(height: number): string;
-}
-
-interface IResponse {
-  data: any;
 }
 
 interface IDeputyHolder {

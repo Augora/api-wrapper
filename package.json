@@ -11,17 +11,15 @@
     "build": "tsc --declaration",
     "prepublish": "npm run build",
     "lint": "tslint --project .",
-    "test": "jest"
+    "test": "npm run lint && jest"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "lodash": "^4.17.10",
-    "normalizr": "^3.2.3"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "@types/jest": "^24.0.12",
     "@types/lodash": "^4.14.126",
-    "@types/normalizr": "^2.0.18",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
     "tslint": "^5.16.0",

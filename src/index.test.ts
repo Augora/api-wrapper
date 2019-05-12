@@ -1,4 +1,14 @@
-import { getDeputies, getDeputiesInOffice, getDeputy } from "./index";
+import {
+  getDeputies,
+  getDeputiesInOffice,
+  getDeputy,
+  getPoliticalGroups,
+  getParliamentaryBodies,
+  getExtraParliamentaryBodies,
+  getLegislativeFiles,
+  getLegislativeFileDetails,
+  LegislativeFilesOrderBy,
+} from "./index";
 
 it("Call getDeputies()", async () => {
   return getDeputies().then(ds => {
@@ -37,5 +47,41 @@ it("Call getDeputy('patricia-lemoine')", async () => {
     expect(d.image120).toBeDefined();
     expect(d.imageDynamic(50)).toBeDefined();
     expect(d.nbMandatsTotaux).toBeDefined();
+  });
+});
+
+it("Call getPoliticalGroups()", async () => {
+  return getPoliticalGroups().then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getParliamentaryBodies()", async () => {
+  return getParliamentaryBodies().then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getExtraParliamentaryBodies()", async () => {
+  return getExtraParliamentaryBodies().then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getLegislativeFiles()", async () => {
+  return getLegislativeFiles().then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getLegislativeFiles(LegislativeFilesOrderBy.Alphanumeric)", async () => {
+  return getLegislativeFiles(LegislativeFilesOrderBy.Alphanumeric).then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getLegislativeFileDetails(1)", async () => {
+  return getLegislativeFileDetails(1).then(d => {
+    expect(d).toBeDefined();
   });
 });

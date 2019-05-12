@@ -66,8 +66,8 @@ interface IDeputies {
 
 export function getDeputies() {
   return getFromUrl("https://www.nosdeputes.fr/deputes/json")
-    .then((r: AxiosResponse) => r.data)
-    .then((d: IDeputies) =>
+    .then((r: AxiosResponse<IDeputies>) => r.data)
+    .then(d =>
       d.deputes.map((i: IDeputyHolder) =>
         assign({}, deputyAttributesMapping(i.depute))
       )
@@ -76,8 +76,8 @@ export function getDeputies() {
 
 export function getDeputiesInOffice() {
   return getFromUrl("https://www.nosdeputes.fr/deputes/enmandat/json")
-    .then((r: AxiosResponse) => r.data)
-    .then((d: IDeputies) =>
+    .then((r: AxiosResponse<IDeputies>) => r.data)
+    .then(d =>
       d.deputes.map((i: IDeputyHolder) =>
         assign({}, deputyAttributesMapping(i.depute))
       )
@@ -86,8 +86,8 @@ export function getDeputiesInOffice() {
 
 export function getDeputy(slug: string) {
   return getFromUrl(`https://www.nosdeputes.fr/${slug}/json`)
-    .then((r: AxiosResponse) => r.data)
-    .then((d: IDeputyHolder) => deputyAttributesMapping(d.depute));
+    .then((r: AxiosResponse<IDeputyHolder>) => r.data)
+    .then(d => deputyAttributesMapping(d.depute));
 }
 
 function deputyAttributesMapping(deputy: IDeputy): IDeputy {

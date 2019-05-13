@@ -7,7 +7,7 @@ import {
   getExtraParliamentaryBodies,
   getLegislativeFiles,
   getLegislativeFileDetails,
-  LegislativeFilesOrderBy,
+  LegislativeFilesOrderBy
 } from "./index";
 
 it("Call getDeputies()", async () => {

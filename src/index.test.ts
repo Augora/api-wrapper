@@ -6,6 +6,8 @@ import {
   getParliamentaryBodies,
   getExtraParliamentaryBodies,
   getStudyGroupsAndFriendship,
+  getMembersOfGroup,
+  getMembersOfOrganisation,
   getLegislativeFiles,
   getLegislativeFileDetails,
   LegislativeFilesOrderBy,
@@ -71,6 +73,18 @@ it("Call getExtraParliamentaryBodies()", async () => {
 
 it("Call getStudyGroupsAndFriendship()", async () => {
   return getStudyGroupsAndFriendship().then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getMembersOfGroup('NI')", async () => {
+  return getMembersOfGroup("NI").then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getMembersOfOrganisation('agence-business-france')", async () => {
+  return getMembersOfOrganisation("agence-business-france").then(d => {
     expect(d).toBeDefined();
   });
 });

@@ -13,6 +13,8 @@ export const getExtraParliamentaryBodies =
   Organizations.getExtraParliamentaryBodies;
 export const getStudyGroupsAndFriendship =
   Organizations.getStudyGroupsAndFriendship;
+export const getMembersOfGroup = Organizations.getMembersOfGroup;
+export const getMembersOfOrganisation = Organizations.getMembersOfOrganisation;
 export const getLegislativeFiles = ParliamentaryDebates.getLegislativeFiles;
 export const getLegislativeFileDetails =
   ParliamentaryDebates.getLegislativeFileDetails;

@@ -5,9 +5,10 @@ import {
   getPoliticalGroups,
   getParliamentaryBodies,
   getExtraParliamentaryBodies,
+  getStudyGroupsAndFriendship,
   getLegislativeFiles,
   getLegislativeFileDetails,
-  LegislativeFilesOrderBy
+  LegislativeFilesOrderBy,
 } from "./index";
 
 it("Call getDeputies()", async () => {
@@ -64,6 +65,12 @@ it("Call getParliamentaryBodies()", async () => {
 
 it("Call getExtraParliamentaryBodies()", async () => {
   return getExtraParliamentaryBodies().then(d => {
+    expect(d).toBeDefined();
+  });
+});
+
+it("Call getStudyGroupsAndFriendship()", async () => {
+  return getStudyGroupsAndFriendship().then(d => {
     expect(d).toBeDefined();
   });
 });

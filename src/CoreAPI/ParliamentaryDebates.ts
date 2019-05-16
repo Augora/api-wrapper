@@ -5,7 +5,7 @@ import "./ParliamentaryDebates.Types";
 export enum LegislativeFilesOrderBy {
   Alphanumeric = "nom",
   Date = "date",
-  Activity = "plus"
+  Activity = "plus",
 }
 
 export function getLegislativeFiles(
@@ -25,5 +25,5 @@ export function getLegislativeFileDetails(id: number) {
 export default {
   getLegislativeFiles,
   getLegislativeFileDetails,
-  LegislativeFilesOrderBy
+  LegislativeFilesOrderBy,
 };

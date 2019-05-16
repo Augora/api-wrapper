@@ -1,4 +1,8 @@
-export function flattenArrayAttribute(attributeName: string, array: any[], nestedArrayAssociativeArray: object) {
+export function flattenArrayAttribute(
+  attributeName: string,
+  array: any[],
+  nestedArrayAssociativeArray: object
+) {
   return array.map(i => i[nestedArrayAssociativeArray[attributeName]]);
 }
 

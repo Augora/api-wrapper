@@ -8,7 +8,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rm -rf ./dist/",
-    "build": "tsc --declaration",
+    "build": "tsc",
     "prepublish": "npm run build",
     "lint": "tslint --project .",
     "test": "npm run lint && jest"

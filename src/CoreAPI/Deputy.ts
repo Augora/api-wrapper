@@ -12,7 +12,7 @@ const nestedArrayAssociativeArray = {
   responsabilites: "responsabilite",
   autres_mandats: "mandat",
   anciens_mandats: "mandat",
-  historique_responsabilites: "responsabilite"
+  historique_responsabilites: "responsabilite",
 };
 const nestedAttributes = Object.keys(nestedArrayAssociativeArray);
 
@@ -43,6 +43,7 @@ export function getDeputy(slug: string) {
 }
 
 function deputyAttributesMapping(deputy: IDeputy): IDeputy {
+  const slug = deputy.slug;
   const flattenedDeputy = nestedAttributes.reduce((prev, curr) => {
     if (deputy[curr] instanceof Array) {
       return assign({}, prev, {
@@ -50,18 +51,18 @@ function deputyAttributesMapping(deputy: IDeputy): IDeputy {
           curr,
           deputy[curr],
           nestedArrayAssociativeArray
-        )
+        ),
       });
     } else {
       return prev;
     }
   }, deputy);
-  const url15 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/15`;
-  const url30 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/30`;
-  const url60 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/60`;
-  const url120 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/120`;
+  const url15 = `https://www.nosdeputes.fr/depute/photo/${slug}/15`;
+  const url30 = `https://www.nosdeputes.fr/depute/photo/${slug}/30`;
+  const url60 = `https://www.nosdeputes.fr/depute/photo/${slug}/60`;
+  const url120 = `https://www.nosdeputes.fr/depute/photo/${slug}/120`;
   const urlDynamic = (height: number) =>
-    `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/${height}`;
+    `https://www.nosdeputes.fr/depute/photo/${slug}/${height}`;
   const nbMandatsTotaux =
     getSafeArrayLength(deputy.anciens_mandats) +
     getSafeArrayLength(deputy.autres_mandats) +
@@ -72,12 +73,12 @@ function deputyAttributesMapping(deputy: IDeputy): IDeputy {
     image60: url60,
     image120: url120,
     imageDynamic: urlDynamic,
-    nbMandatsTotaux
+    nbMandatsTotaux,
   });
 }
 
 export default {
   getDeputies,
   getDeputiesInOffice,
-  getDeputy
+  getDeputy,
 };

@@ -1,6 +1,6 @@
 import { getFromUrl } from "../Utils/APICall";
 import { AxiosResponse } from "axios";
-import './Organizations.Types';
+import "./Organizations.Types";
 
 export function getPoliticalGroups() {
   return getFromUrl(`https://www.nosdeputes.fr/organismes/groupe/json`)
@@ -20,8 +20,15 @@ export function getExtraParliamentaryBodies() {
     .then(d => d.organismes.map(i => i.organisme));
 }
 
+export function getStudyGroupsAndFriendship() {
+  return getFromUrl(`https://www.nosdeputes.fr/organismes/groupes/json`)
+    .then((r: AxiosResponse<IParliamentaryBodies>) => r.data)
+    .then(d => d.organismes.map(i => i.organisme));
+}
+
 export default {
   getPoliticalGroups,
   getParliamentaryBodies,
-  getExtraParliamentaryBodies
+  getExtraParliamentaryBodies,
+  getStudyGroupsAndFriendship,
 };

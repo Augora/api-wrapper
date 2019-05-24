@@ -39,7 +39,38 @@ interface IMinimalDeputy {
   twitter: string;
 }
 
-interface IDeputy extends IMinimalDeputy, ICustomDeputyFields {}
+interface IMinimalDetailedDeputy extends IMinimalDeputy {
+  groupe: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  responsabilites: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  responsabilites_extra_parlementaires: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  groupes_parlementaires: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  historique_responsabilites: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+    fin_fonction: string;
+  };
+}
+
+interface IDetailedDeputyHolder {
+  depute: IDetailedDeputy;
+}
 
 interface IDeputyHolder {
   depute: IMinimalDeputy;
@@ -48,3 +79,6 @@ interface IDeputyHolder {
 interface IDeputies {
   deputes: [IDeputyHolder];
 }
+
+interface IDeputy extends IMinimalDeputy, ICustomDeputyFields {}
+interface IDetailedDeputy extends IMinimalDetailedDeputy, ICustomDeputyFields {}

@@ -1,5 +1,4 @@
 import { getFromUrl } from "../Utils/APICall";
-import { AxiosResponse } from "axios";
 import "./ParliamentaryDebates.Types";
 
 export enum LegislativeFilesOrderBy {
@@ -8,18 +7,20 @@ export enum LegislativeFilesOrderBy {
   Activity = "plus",
 }
 
-export function getLegislativeFiles(
+export async function getLegislativeFiles(
   orderBy: LegislativeFilesOrderBy = LegislativeFilesOrderBy.Activity
 ) {
-  return getFromUrl(
+  const r = await getFromUrl<ISections>(
     `https://www.nosdeputes.fr/15/dossiers/${orderBy}/json`
-  ).then((r: AxiosResponse<ISections>) => r.data);
+  );
+  return r.data;
 }
 
-export function getLegislativeFileDetails(id: number) {
-  return getFromUrl(`https://www.nosdeputes.fr/15/dossier/${id}/json`).then(
-    (r: AxiosResponse<IDetailedSection>) => r.data
+export async function getLegislativeFileDetails(id: number) {
+  const r = await getFromUrl<IDetailedSection>(
+    `https://www.nosdeputes.fr/15/dossier/${id}/json`
   );
+  return r.data;
 }
 
 export default {

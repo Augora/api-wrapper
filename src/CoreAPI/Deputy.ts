@@ -1,7 +1,6 @@
-import { assign } from "lodash";
+import assign from "lodash/assign";
 import { getFromUrl } from "../Utils/APICall";
 import { flattenArrayAttribute, getSafeArrayLength } from "./Mappings";
-import { AxiosResponse } from "axios";
 import "./Deputy.Types";
 
 const nestedArrayAssociativeArray = {
@@ -16,33 +15,32 @@ const nestedArrayAssociativeArray = {
 };
 const nestedAttributes = Object.keys(nestedArrayAssociativeArray);
 
-export function getDeputies() {
-  return getFromUrl("https://www.nosdeputes.fr/deputes/json")
-    .then((r: AxiosResponse<IDeputies>) => r.data)
-    .then(d =>
-      d.deputes.map((i: IDeputyHolder) =>
-        assign({}, deputyAttributesMapping(i.depute))
-      )
-    );
+export async function getDeputies() {
+  const r = await getFromUrl<IDeputies>(
+    "https://www.nosdeputes.fr/deputes/json"
+  );
+  return r.data.deputes.map((i: IDeputyHolder) =>
+    assign({}, deputyAttributesMapping(i.depute))
+  );
 }
 
-export function getDeputiesInOffice() {
-  return getFromUrl("https://www.nosdeputes.fr/deputes/enmandat/json")
-    .then((r: AxiosResponse<IDeputies>) => r.data)
-    .then(d =>
-      d.deputes.map((i: IDeputyHolder) =>
-        assign({}, deputyAttributesMapping(i.depute))
-      )
-    );
+export async function getDeputiesInOffice() {
+  const r = await getFromUrl<IDeputies>(
+    "https://www.nosdeputes.fr/deputes/enmandat/json"
+  );
+  return r.data.deputes.map((i: IDeputyHolder) =>
+    assign({}, deputyAttributesMapping(i.depute))
+  );
 }
 
-export function getDeputy(slug: string) {
-  return getFromUrl(`https://www.nosdeputes.fr/${slug}/json`)
-    .then((r: AxiosResponse<IDeputyHolder>) => r.data)
-    .then(d => deputyAttributesMapping(d.depute));
+export async function getDeputy(slug: string) {
+  const r = await getFromUrl<IDeputyHolder>(
+    `https://www.nosdeputes.fr/${slug}/json`
+  );
+  return deputyAttributesMapping(r.data.depute);
 }
 
-function deputyAttributesMapping(deputy: IDeputy): IDeputy {
+function deputyAttributesMapping(deputy: IMinimalDeputy): IDeputy {
   const slug = deputy.slug;
   const flattenedDeputy = nestedAttributes.reduce((prev, curr) => {
     if (deputy[curr] instanceof Array) {

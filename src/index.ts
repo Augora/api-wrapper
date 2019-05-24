@@ -1,4 +1,4 @@
-import { assign } from "lodash";
+import assign from "lodash/assign";
 
 import Deputy from "./CoreAPI/Deputy";
 import Organizations from "./CoreAPI/Organizations";

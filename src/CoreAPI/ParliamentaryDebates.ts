@@ -23,8 +23,16 @@ export async function getLegislativeFileDetails(id: number) {
   return r.data;
 }
 
+export async function getAmendmentsOnText(textId: number) {
+  const r = await getFromUrl<IAmendmentsHolder>(
+    `https://www.nosdeputes.fr/15/amendements/${textId}/json`
+  );
+  return r.data.amendements.map(a => a.amendement);
+}
+
 export default {
   getLegislativeFiles,
   getLegislativeFileDetails,
   LegislativeFilesOrderBy,
+  getAmendmentsOnText,
 };

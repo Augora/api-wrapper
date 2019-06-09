@@ -81,3 +81,36 @@ interface ISousSection {
     url_nosdeputes_api: string;
   };
 }
+
+interface IAmendmentsHolder {
+  amendements: [IAdmendmentHolder];
+}
+
+interface IAdmendmentHolder {
+  amendement: IAdmendment;
+}
+
+interface IAdmendment {
+  id: string;
+  legislature: string;
+  texteloi_id: string;
+  numero: string;
+  sous_amendement_de: object;
+  rectif: string;
+  sujet: string;
+  sort: string;
+  date: string;
+  texte: string;
+  expose: string;
+  signataires: string;
+  source: string;
+  nb_multiples: string;
+  auteur_groupe_acronyme: string;
+  cle_unicite: string;
+  parlementaires: [IParlementaireSlug];
+  url_nosdeputes: string;
+}
+
+interface IParlementaireSlug {
+  parlementaire: string;
+}

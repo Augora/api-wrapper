@@ -8,8 +8,8 @@ export async function getDeputies() {
   const r = await getFromUrl<IDeputies>(
     "https://www.nosdeputes.fr/deputes/json"
   );
-  const cleanedUpDeputies: IDeputy[] = deputyCustomAttributes(
-    cleanUpNestedObject(r.data)
+  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(d =>
+    deputyCustomAttributes(d)
   );
   return cleanedUpDeputies;
 }
@@ -18,8 +18,8 @@ export async function getDeputiesInOffice() {
   const r = await getFromUrl<IDeputies>(
     "https://www.nosdeputes.fr/deputes/enmandat/json"
   );
-  const cleanedUpDeputies: IDeputy[] = deputyCustomAttributes(
-    cleanUpNestedObject(r.data)
+  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(d =>
+    deputyCustomAttributes(d)
   );
   return cleanedUpDeputies;
 }

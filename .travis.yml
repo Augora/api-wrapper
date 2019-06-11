@@ -3,5 +3,5 @@ node_js:
   - "10.15.3"
   - "12.2.0"
 cache: yarn
-notifications: 
-  slack: labetepolitique-team:NbzHhCF6cj1DOJhe8lGOg5ih 
+notifications:
+  slack: augora:NbzHhCF6cj1DOJhe8lGOg5ih

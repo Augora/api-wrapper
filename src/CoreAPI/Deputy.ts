@@ -1,15 +1,15 @@
 import assign from "lodash/assign";
 import { getFromUrl } from "../Utils/APICall";
 import { getSafeArrayLength } from "./Mappings";
-import "./Deputy.Types";
 import { cleanUpNestedObject } from "../Utils/NestedObjectManagement";
+import "./Deputy.Types";
 
 export async function getDeputies() {
   const r = await getFromUrl<IDeputies>(
     "https://www.nosdeputes.fr/deputes/json"
   );
-  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(d =>
-    deputyCustomAttributes(d)
+  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(
+    (d: IMinimalDeputy) => deputyCustomAttributes(d)
   );
   return cleanedUpDeputies;
 }
@@ -18,8 +18,8 @@ export async function getDeputiesInOffice() {
   const r = await getFromUrl<IDeputies>(
     "https://www.nosdeputes.fr/deputes/enmandat/json"
   );
-  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(d =>
-    deputyCustomAttributes(d)
+  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(
+    (d: IMinimalDeputy) => deputyCustomAttributes(d)
   );
   return cleanedUpDeputies;
 }
@@ -36,12 +36,12 @@ export async function getDeputy(slug: string) {
 
 function deputyCustomAttributes(deputy: IMinimalDeputy): any {
   const slug = deputy.slug;
-  const url15 = `https://www.nosdeputes.fr/depute/photo/${slug}/15`;
-  const url30 = `https://www.nosdeputes.fr/depute/photo/${slug}/30`;
-  const url60 = `https://www.nosdeputes.fr/depute/photo/${slug}/60`;
-  const url120 = `https://www.nosdeputes.fr/depute/photo/${slug}/120`;
   const urlDynamic = (height: number) =>
     `https://www.nosdeputes.fr/depute/photo/${slug}/${height}`;
+  const url15 = urlDynamic(15);
+  const url30 = urlDynamic(30);
+  const url60 = urlDynamic(60);
+  const url120 = urlDynamic(120);
   const nbMandatsTotaux =
     getSafeArrayLength(deputy.anciens_mandats) +
     getSafeArrayLength(deputy.autres_mandats) +

@@ -30,9 +30,17 @@ export async function getAmendmentsOnText(textId: number) {
   return r.data.amendements.map(a => a.amendement);
 }
 
+export async function getInterventionsOfASession(sessionId: number) {
+  const r = await getFromUrl<ISession>(
+    `https://www.nosdeputes.fr/15/seance/${sessionId}/json`
+  );
+  return r.data.seance.map(a => a.intervention);
+}
+
 export default {
   getLegislativeFiles,
   getLegislativeFileDetails,
   LegislativeFilesOrderBy,
   getAmendmentsOnText,
+  getInterventionsOfASession,
 };

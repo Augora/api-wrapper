@@ -20,5 +20,8 @@ export const getLegislativeFileDetails =
   ParliamentaryDebates.getLegislativeFileDetails;
 export const LegislativeFilesOrderBy =
   ParliamentaryDebates.LegislativeFilesOrderBy;
+export const getAmendmentsOnText = ParliamentaryDebates.getAmendmentsOnText;
+export const getInterventionsOfASession =
+  ParliamentaryDebates.getInterventionsOfASession;
 
 export default assign({}, Deputy, Organizations, ParliamentaryDebates);

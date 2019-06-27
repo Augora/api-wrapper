@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Augora Wrapper 👋</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-0.8.0-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-0.8.2-blue.svg?cacheSeconds=2592000" />
   <a href="https://twitter.com/BacasKevin">
     <img alt="Twitter: BacasKevin" src="https://img.shields.io/twitter/follow/BacasKevin.svg?style=social" target="_blank" />
   </a>

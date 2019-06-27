@@ -4,9 +4,7 @@ it("should return the same structure", () => {
   const simpleStructure = {
     lel: "lel",
   };
-  expect(cleanUpNestedObject(simpleStructure)).toMatchObject({
-    lel: "lel",
-  });
+  expect(cleanUpNestedObject(simpleStructure)).toMatch("lel");
 });
 
 it("should cleanUp this simple object", () => {
@@ -71,4 +69,13 @@ it("should cleanUp this array object", () => {
     { a: "a", b: "b" },
     { a: "a", b: "b" },
   ]);
+});
+
+it("should cleanUp this array", () => {
+  const simpleStructure = [
+    {
+      adresse: "lel",
+    },
+  ];
+  expect(cleanUpNestedObject(simpleStructure)).toMatchObject(["lel"]);
 });

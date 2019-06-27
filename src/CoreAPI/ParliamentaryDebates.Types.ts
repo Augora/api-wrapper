@@ -114,3 +114,33 @@ interface IAdmendment {
 interface IParlementaireSlug {
   parlementaire: string;
 }
+
+interface ISession {
+  seance: [IInterventionHolder];
+}
+
+interface IInterventionHolder {
+  intervention: IIntervention;
+}
+
+interface IIntervention {
+  seance_id: string;
+  seance_titre: string;
+  seance_lieu: string;
+  date: string;
+  heure: string;
+  type: string;
+  timestamp: string;
+  section: string;
+  soussection: string;
+  intervenant_nom: string;
+  intervenant_fonction: object;
+  intervenant_slug: string;
+  intervenant_groupe: string;
+  nbmots: string;
+  contenu: string;
+  source: string;
+  url_nosdeputes: string;
+  url_nosdeputes_api: string;
+  id: string;
+}

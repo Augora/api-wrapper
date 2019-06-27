@@ -1,83 +1,63 @@
-import { assign } from "lodash";
+import assign from "lodash/assign";
 import { getFromUrl } from "../Utils/APICall";
-import { flattenArrayAttribute, getSafeArrayLength } from "./Mappings";
-import { AxiosResponse } from "axios";
+import { getSafeArrayLength } from "./Mappings";
+import { cleanUpNestedObject } from "../Utils/NestedObjectManagement";
 import "./Deputy.Types";
 
-const nestedArrayAssociativeArray = {
-  sites_web: "site",
-  emails: "email",
-  adresses: "adresse",
-  collaborateurs: "collaborateur",
-  responsabilites: "responsabilite",
-  autres_mandats: "mandat",
-  anciens_mandats: "mandat",
-  historique_responsabilites: "responsabilite"
-};
-const nestedAttributes = Object.keys(nestedArrayAssociativeArray);
-
-export function getDeputies() {
-  return getFromUrl("https://www.nosdeputes.fr/deputes/json")
-    .then((r: AxiosResponse<IDeputies>) => r.data)
-    .then(d =>
-      d.deputes.map((i: IDeputyHolder) =>
-        assign({}, deputyAttributesMapping(i.depute))
-      )
-    );
+export async function getDeputies() {
+  const r = await getFromUrl<IDeputies>(
+    "https://www.nosdeputes.fr/deputes/json"
+  );
+  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(
+    (d: IMinimalDeputy) => deputyCustomAttributes(d)
+  );
+  return cleanedUpDeputies;
 }
 
-export function getDeputiesInOffice() {
-  return getFromUrl("https://www.nosdeputes.fr/deputes/enmandat/json")
-    .then((r: AxiosResponse<IDeputies>) => r.data)
-    .then(d =>
-      d.deputes.map((i: IDeputyHolder) =>
-        assign({}, deputyAttributesMapping(i.depute))
-      )
-    );
+export async function getDeputiesInOffice() {
+  const r = await getFromUrl<IDeputies>(
+    "https://www.nosdeputes.fr/deputes/enmandat/json"
+  );
+  const cleanedUpDeputies: IDeputy[] = cleanUpNestedObject(r.data).map(
+    (d: IMinimalDeputy) => deputyCustomAttributes(d)
+  );
+  return cleanedUpDeputies;
 }
 
-export function getDeputy(slug: string) {
-  return getFromUrl(`https://www.nosdeputes.fr/${slug}/json`)
-    .then((r: AxiosResponse<IDeputyHolder>) => r.data)
-    .then(d => deputyAttributesMapping(d.depute));
+export async function getDeputy(slug: string) {
+  const r = await getFromUrl<IDetailedDeputyHolder>(
+    `https://www.nosdeputes.fr/${slug}/json`
+  );
+  const cleanedUpDeputy: IDetailedDeputy = deputyCustomAttributes(
+    cleanUpNestedObject(r.data)
+  );
+  return cleanedUpDeputy;
 }
 
-function deputyAttributesMapping(deputy: IDeputy): IDeputy {
-  const flattenedDeputy = nestedAttributes.reduce((prev, curr) => {
-    if (deputy[curr] instanceof Array) {
-      return assign({}, prev, {
-        [curr]: flattenArrayAttribute(
-          curr,
-          deputy[curr],
-          nestedArrayAssociativeArray
-        )
-      });
-    } else {
-      return prev;
-    }
-  }, deputy);
-  const url15 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/15`;
-  const url30 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/30`;
-  const url60 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/60`;
-  const url120 = `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/120`;
+function deputyCustomAttributes(deputy: IMinimalDeputy): any {
+  const slug = deputy.slug;
   const urlDynamic = (height: number) =>
-    `https://www.nosdeputes.fr/depute/photo/${deputy.slug}/${height}`;
+    `https://www.nosdeputes.fr/depute/photo/${slug}/${height}`;
+  const url15 = urlDynamic(15);
+  const url30 = urlDynamic(30);
+  const url60 = urlDynamic(60);
+  const url120 = urlDynamic(120);
   const nbMandatsTotaux =
     getSafeArrayLength(deputy.anciens_mandats) +
     getSafeArrayLength(deputy.autres_mandats) +
     getSafeArrayLength(deputy.anciens_autres_mandats);
-  return assign({}, flattenedDeputy, {
+  return assign({}, deputy, {
     image15: url15,
     image30: url30,
     image60: url60,
     image120: url120,
     imageDynamic: urlDynamic,
-    nbMandatsTotaux
+    nbMandatsTotaux,
   });
 }
 
 export default {
   getDeputies,
   getDeputiesInOffice,
-  getDeputy
+  getDeputy,
 };

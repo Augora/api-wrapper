@@ -81,3 +81,66 @@ interface ISousSection {
     url_nosdeputes_api: string;
   };
 }
+
+interface IAmendmentsHolder {
+  amendements: [IAdmendmentHolder];
+}
+
+interface IAdmendmentHolder {
+  amendement: IAdmendment;
+}
+
+interface IAdmendment {
+  id: string;
+  legislature: string;
+  texteloi_id: string;
+  numero: string;
+  sous_amendement_de: object;
+  rectif: string;
+  sujet: string;
+  sort: string;
+  date: string;
+  texte: string;
+  expose: string;
+  signataires: string;
+  source: string;
+  nb_multiples: string;
+  auteur_groupe_acronyme: string;
+  cle_unicite: string;
+  parlementaires: [IParlementaireSlug];
+  url_nosdeputes: string;
+}
+
+interface IParlementaireSlug {
+  parlementaire: string;
+}
+
+interface ISession {
+  seance: [IInterventionHolder];
+}
+
+interface IInterventionHolder {
+  intervention: IIntervention;
+}
+
+interface IIntervention {
+  seance_id: string;
+  seance_titre: string;
+  seance_lieu: string;
+  date: string;
+  heure: string;
+  type: string;
+  timestamp: string;
+  section: string;
+  soussection: string;
+  intervenant_nom: string;
+  intervenant_fonction: object;
+  intervenant_slug: string;
+  intervenant_groupe: string;
+  nbmots: string;
+  contenu: string;
+  source: string;
+  url_nosdeputes: string;
+  url_nosdeputes_api: string;
+  id: string;
+}

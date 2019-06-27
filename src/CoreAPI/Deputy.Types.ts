@@ -1,4 +1,13 @@
-interface IDeputy {
+interface ICustomDeputyFields {
+  image15: string;
+  image30: string;
+  image60: string;
+  image120: string;
+  nbMandatsTotaux: number;
+  imageDynamic(height: number): string;
+}
+
+interface IMinimalDeputy {
   id: number;
   nom: string;
   nom_de_famille: string;
@@ -28,20 +37,48 @@ interface IDeputy {
   url_nosdeputes_api: string;
   nb_mandats: number;
   twitter: string;
+}
 
-  // Custom fields
-  image15: string;
-  image30: string;
-  image60: string;
-  image120: string;
-  nbMandatsTotaux: number;
-  imageDynamic(height: number): string;
+interface IMinimalDetailedDeputy extends IMinimalDeputy {
+  groupe: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  responsabilites: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  responsabilites_extra_parlementaires: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  groupes_parlementaires: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+  };
+  historique_responsabilites: {
+    organisme: string;
+    fonction: string;
+    debut_fonction: string;
+    fin_fonction: string;
+  };
+}
+
+interface IDetailedDeputyHolder {
+  depute: IDetailedDeputy;
 }
 
 interface IDeputyHolder {
-  depute: IDeputy;
+  depute: IMinimalDeputy;
 }
 
 interface IDeputies {
   deputes: [IDeputyHolder];
 }
+
+interface IDeputy extends IMinimalDeputy, ICustomDeputyFields {}
+interface IDetailedDeputy extends IMinimalDetailedDeputy, ICustomDeputyFields {}

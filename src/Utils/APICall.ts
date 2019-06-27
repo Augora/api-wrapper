@@ -1,9 +1,8 @@
-import axios from "axios";
-import { AxiosPromise } from "axios";
+import axios, { AxiosPromise } from "axios";
 
-export function getFromUrl(url: string): AxiosPromise {
+export function getFromUrl<T = any>(url: string): AxiosPromise<T> {
   return axios({
     method: "get",
-    url
+    url,
   });
 }

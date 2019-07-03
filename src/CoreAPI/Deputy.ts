@@ -4,6 +4,9 @@ import { getSafeArrayLength } from "./Mappings";
 import { cleanUpNestedObject } from "../Utils/NestedObjectManagement";
 import "./Deputy.Types";
 
+/**
+ * Cette *fonction*
+ */
 export async function getDeputies() {
   const r = await getFromUrl<IDeputies>(
     "https://www.nosdeputes.fr/deputes/json"
@@ -24,6 +27,11 @@ export async function getDeputiesInOffice() {
   return cleanedUpDeputies;
 }
 
+/**
+ * Cette *fonction*
+ *
+ * @param slug le slug du député, cet attribut peut être trouvé dans l'interface [[IDeputy.slug]]
+ */
 export async function getDeputy(slug: string) {
   const r = await getFromUrl<IDetailedDeputyHolder>(
     `https://www.nosdeputes.fr/${slug}/json`

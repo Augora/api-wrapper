@@ -12,8 +12,8 @@
     "prepublish": "npm run build",
     "lint": "tslint --project .",
     "test": "npm run lint && jest",
-    "doc": "typedoc --out docs ./src/index.ts",
-    "deploy-docs": "npm run docs && now alias --token=$NOW_TOKEN $(now ./docs --no-clipboard --token=$NOW_TOKEN --public) wrapper-docs.augora.fr"
+    "gen-docs": "typedoc --out docs ./src/index.ts",
+    "deploy-docs": "npm run gen-docs && now alias --token=$NOW_TOKEN $(now ./docs --no-clipboard --token=$NOW_TOKEN --public) wrapper-docs.augora.fr"
   },
   "dependencies": {
     "axios": "^0.19.0",

@@ -18,7 +18,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "lodash": "^4.17.15",
-    "now": "^15.8.5",
+    "now": "^15.8.7",
     "typedoc": "^0.14.2"
   },
   "devDependencies": {

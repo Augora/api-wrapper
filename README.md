@@ -11,7 +11,7 @@
 ## Install
 
 ```sh
-yarn add lbp-wrapper
+yarn add -D lbp-wrapper
 ```
 
 ## Run tests

@@ -8,12 +8,10 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rm -rf ./dist/",
-    "build": "tsc",
-    "prepublish": "npm run build",
+    "build": "typedoc --out docs ./src/index.ts",
+    "prepublish": "tsc",
     "lint": "tslint --project .",
-    "test": "npm run lint && jest",
-    "gen-docs": "typedoc --out docs ./src/index.ts",
-    "deploy-docs": "npm run gen-docs && now alias --token=$NOW_TOKEN $(now ./docs --no-clipboard --token=$NOW_TOKEN --public) wrapper-docs.augora.fr"
+    "test": "npm run lint && jest"
   },
   "dependencies": {
     "axios": "^0.19.0",

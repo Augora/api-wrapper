@@ -30,7 +30,7 @@ jobs:
         env:
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
         with:
-          args: now switch augora
+          args: now --token $ZEIT_TOKEN switch augora
       - name: deploy
         uses: mikeal/npx@master
         env:

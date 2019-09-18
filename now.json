@@ -8,5 +8,6 @@
       "config": { "distDir": "docs" }
     }
   ],
-  "alias": ["wrapper-docs.augora.fr"]
+  "alias": ["wrapper-docs.augora.fr"],
+  "scope": "augora"
 }

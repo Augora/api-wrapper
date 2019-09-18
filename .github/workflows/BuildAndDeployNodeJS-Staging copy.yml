@@ -1,9 +1,10 @@
-name: Node CI
+name: CI/CD Staging
 
 on:
   push:
-  branches:
-    - develop
+    branches:
+      - develop
+
 jobs:
   build:
     runs-on: ubuntu-latest

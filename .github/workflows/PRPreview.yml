@@ -1,5 +1,7 @@
-name: deploy website preview
+name: Pull Request preview
+
 on: [pull_request]
+
 jobs:
   build:
     runs-on: ubuntu-latest

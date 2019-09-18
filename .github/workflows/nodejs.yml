@@ -25,15 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: login_augora
-        uses: mikeal/npx@master
-        env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
-        with:
-          args: now --token $ZEIT_TOKEN switch augora
       - name: deploy
         uses: mikeal/npx@master
         env:
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
         with:
-          args: now --token $ZEIT_TOKEN
+          args: "now --token $ZEIT_TOKEN"

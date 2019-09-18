@@ -1,6 +1,9 @@
 name: Node CI
 
-on: [push]
+on:
+  push:
+  branches:
+    - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,4 +42,4 @@ jobs:
         env:
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
         with:
-          args: "now --token $ZEIT_TOKEN"
+          args: "now --token $ZEIT_TOKEN --prod"

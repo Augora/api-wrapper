@@ -33,3 +33,6 @@ jest/
 # compiled files
 dist/
 tsDist/
+
+# Doc files
+docs/

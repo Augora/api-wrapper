@@ -5,7 +5,10 @@ import { cleanUpNestedObject } from "../Utils/NestedObjectManagement";
 import "./Deputy.Types";
 
 /**
- * Cette *fonction*
+ * Fonction qui retourne la liste des députés sous forme d'une promesse.
+ *
+ * @export
+ * @returns la liste de tous les députés [[IDeputy]]
  */
 export async function getDeputies() {
   const r = await getFromUrl<IDeputies>(
@@ -17,6 +20,12 @@ export async function getDeputies() {
   return cleanedUpDeputies;
 }
 
+/**
+ * Fonction qui retourne la liste des députés en mandat sous forme d'une promesse.
+ *
+ * @export
+ * @returns la liste de tous les députés en mandat [[IDeputy]]
+ */
 export async function getDeputiesInOffice() {
   const r = await getFromUrl<IDeputies>(
     "https://www.nosdeputes.fr/deputes/enmandat/json"
@@ -28,9 +37,11 @@ export async function getDeputiesInOffice() {
 }
 
 /**
- * Cette *fonction*
+ * Retourne le détail d'un député
  *
- * @param slug le slug du député, cet attribut peut être trouvé dans l'interface [[IDeputy.slug]]
+ * @export
+ * @param {string} slug le slug du député qui peut être trouvé dans [[IDepute.slug]]
+ * @returns le détail d'un député
  */
 export async function getDeputy(slug: string) {
   const r = await getFromUrl<IDetailedDeputyHolder>(

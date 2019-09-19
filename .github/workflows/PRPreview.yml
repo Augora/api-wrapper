@@ -1,4 +1,4 @@
-name: Pull Request preview
+name: Pull Request Preview
 
 on: [pull_request]
 
@@ -16,6 +16,12 @@ jobs:
           yarn install
           yarn run build
       - name: deploy now
+        uses: mikeal/npx@master
+        env:
+          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+        with:
+          args: "now --token $ZEIT_TOKEN"
+      - name: Comment on PR
         env:
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
         run: now --no-clipboard -t ${ZEIT_TOKEN} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}

@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [macOS-10.14, windows-2016, ubuntu-18.04]
+        # Virtual envs : https://help.github.com/en/articles/virtual-environments-for-github-actions
+        os: [macOS-latest, windows-latest, ubuntu-latest]
         node-version: [8.x, 10.x, 12.x]
     steps:
       - uses: actions/checkout@v1
@@ -55,4 +55,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
-          args: '{\"channel\":\"C4H19LCN9\",\"text\":\"App deployed in staging environment :rocket:\"}'
+          args: '{\"channel\":\"C4H19LCN9\",\"text\":\"${GITHUB_REPOSITORY} deployed in staging environment :rocket:\\\nCommit: ${GITHUB_SHA}\"}'

@@ -45,6 +45,10 @@ jobs:
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
         with:
           args: "now --token $ZEIT_TOKEN"
+      - name: Comment on PR
+        env:
+          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+        run: now --no-clipboard -t ${ZEIT_TOKEN} -m commit=${GITHUB_SHA} -m branch=${GITHUB_REF}
       - name: Notify slack
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

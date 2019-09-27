@@ -56,4 +56,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
-          args: ${{ format('{\"channel\":\"C4H19LCN9\",\"text\":\"{0} deployed in staging environment :rocket:\\nCommit:{1}\"}', ${GITHUB_REPOSITORY}, ${GITHUB_SHA}) }}
+          args: ${{ format('{\"channel\":\"C4H19LCN9\",\"text\":\"{0} deployed in staging environment :rocket:\\nCommit:{1}\"}', '${GITHUB_REPOSITORY}', '${GITHUB_SHA}') }}

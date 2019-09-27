@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         # Virtual envs : https://help.github.com/en/articles/virtual-environments-for-github-actions
